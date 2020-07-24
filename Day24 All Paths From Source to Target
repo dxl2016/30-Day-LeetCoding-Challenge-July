@@ -1,0 +1,16 @@
+class Solution:
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        
+        n = len(graph)
+        def dfs(node, stack):
+            if node == n-1:
+                ans.append(stack+[node])
+                return
+            
+            for nxt in graph[node]:
+                dfs(nxt, stack+[node])
+        
+        ans = []
+        dfs(0, [])
+        return ans
+
