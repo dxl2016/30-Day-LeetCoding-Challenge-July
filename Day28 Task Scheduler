@@ -1,0 +1,14 @@
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        if n == 0:
+            return len(tasks)
+        if tasks == []:
+            return 0
+        freqs = list(Counter(tasks).values())
+        f_max = max(freqs)
+        num_f_max = freqs.count(f_max)
+        needed_to_fill = (n+1-num_f_max)*(f_max-1)
+        remaining = len(tasks) - f_max*num_f_max
+        
+        return f_max*num_f_max + max(needed_to_fill, remaining)
+
